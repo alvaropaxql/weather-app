@@ -1,2 +1,3 @@
-# wheather-app
-Weather JavaScript app
+# Wheather App
+
+Weather app created with JavaScript.

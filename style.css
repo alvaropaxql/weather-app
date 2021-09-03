@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background: #7F7FD5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* ----------------------------------------------------------- */
+/* ------------------------- wrapper ------------------------- */
+/* ----------------------------------------------------------- */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 40rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    background: white;
+}
+
+.wrapper header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 0.1rem solid #bfbfbf;
+
+    color: #7F7FD5;
+}
+/*----------------------*/
+/* -------header -------*/
+.wrapper header i {
+    margin-right: 0.5rem;
+
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+
+/*---------------------*/
+/*------- input -------*/
+.wrapper .input-section {
+    /* hidden */
+    display: none;
+    margin: 1.5rem 1rem;
+}
+
+/* info text */
+.input-section .info-txt {
+    /* hidden */
+    display: none;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem 0.2rem;
+    border-radius: 0.2rem;
+
+    background: red;
+    color: white;
+    font-size: medium;
+    text-align: center;
+}
+
+.info-txt.error {
+    display: block;
+    color: #721c24;
+    background: #f8d7da;
+    border: 0.1rem solid #f5c6cb;
+}
+
+.info-txt.pending {
+    display: block;
+    color: #0c5460;
+    background: #d1ecf1;
+    border: 0.1rem solid #bee5eb;
+}
+
+/*input field and button */
+.input-section :where(input,button) {
+    width: 100%;
+    height: 3rem;
+    border: none;
+    border-radius: 0.2rem;
+    outline: none;
+
+    font-size: large;
+}
+
+.input-section input {
+    border: 0.1rem solid #bfbfbf;
+    text-align: center;
+}
+
+.input-section input:is(:focus, :valid) {
+    border: 0.1rem solid #43affc;
+}
+
+.input-section button {
+    color: white;
+    background: #7F7FD5;
+    cursor: pointer;
+}
+/*-------------------------*/
+/*------- separator -------*/
+.input-section .separator {
+    height: 0.1rem;
+    width: 100%;
+    margin: 1rem 0;
+    /* making the or <tag> aligned */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #bfbfbf;
+}
+
+.separator::before {
+    padding: 0 0.8rem;
+
+    content: "or";
+    font-size: large;
+    color: grey;
+    background: white;
+}
+
+/* ----------------------------------------------------------- */
+/* ------------------------- xxxxxxx ------------------------- */
+/* ----------------------------------------------------------- */
