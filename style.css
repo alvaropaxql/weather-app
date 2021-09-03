@@ -28,7 +28,8 @@ body {
     width: 50%;
     max-width: 40rem;
     padding: 1rem;
-    border-radius: 1rem;
+    margin: 1rem;
+    border-radius: 2rem;
 
     background: white;
 }
@@ -43,22 +44,31 @@ body {
 
     color: #7F7FD5;
 }
-/*----------------------*/
-/* -------header -------*/
+
+/*--------------------------*/
+/*--------- header ---------*/
+/*--------------------------*/
 .wrapper header i {
     margin-right: 0.5rem;
 
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 0rem;
 }
 
+.wrapper.active header i{
+    font-size: 1.3rem;
+    margin-left: 0.3rem;
+}
 
-/*---------------------*/
-/*------- input -------*/
+/*--------------------------*/
+/*---------- input ---------*/
+/*--------------------------*/
 .wrapper .input-section {
-    /* hidden */
-    display: none;
     margin: 1.5rem 1rem;
+}
+
+.wrapper.active .input-section {
+    display: none;
 }
 
 /* info text */
@@ -90,7 +100,7 @@ body {
 }
 
 /*input field and button */
-.input-section :where(input,button) {
+.input-section :where(input, button) {
     width: 100%;
     height: 3rem;
     border: none;
@@ -114,8 +124,10 @@ body {
     background: #7F7FD5;
     cursor: pointer;
 }
-/*-------------------------*/
-/*------- separator -------*/
+
+/*--------------------------*/
+/*------- separator --------*/
+/*--------------------------*/
 .input-section .separator {
     height: 0.1rem;
     width: 100%;
@@ -138,5 +150,102 @@ body {
 }
 
 /* ----------------------------------------------------------- */
-/* ------------------------- xxxxxxx ------------------------- */
+/* ---------------- weather section - wrapper ---------------- */
 /* ----------------------------------------------------------- */
+
+.wrapper .weather-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.wrapper.active .weather-section {
+    display: flex;
+}
+
+.weather-section #state {
+    font-size: 8rem;
+    color: #7F7FD5;
+}
+
+.weather-section .temp {
+    display: flex;
+
+    font-size: 3rem;
+    font-weight: normal;
+}
+
+.weather-section .temp .number {
+    font-weight: bold;
+}
+
+.weather-section .temp .degree {
+    display: block;
+    margin: -0.2rem 0.1rem 0 0;
+
+    font-size: 2.5rem;
+}
+
+.weather-section .weather {
+    margin: -0.4rem 0 0 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.weather-section .location {
+    margin: 0.5rem 0 1rem;
+
+    font-size: 1.1rem;
+}
+
+/*--------------------------*/
+/*-------- details ---------*/
+/*--------------------------*/
+
+.weather-section .bottom-details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.1rem solid #bfbfbf;
+    padding-top: 0.5rem;
+}
+
+.bottom-details .column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column #details {
+    margin-right: 0.5rem;
+    color: #7F7FD5;
+    font-size: 2.5rem;
+}
+
+.column.humidity {
+    border-left: 0.1rem solid #bfbfbf;
+}
+
+.details .temp,
+.humidity {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.details .temp .degree {
+    margin: 0;
+    font-size: 1.1rem;
+    padding: 0 0.2rem 0 0.1rem;
+}
+
+.details .number {
+    font-weight: bold;
+}
+
+.details p {
+    font-size: 0.9rem;
+}
