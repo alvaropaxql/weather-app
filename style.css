@@ -177,7 +177,7 @@ body {
     font-weight: normal;
 }
 
-.weather-section .temp .number {
+.weather-section .temp .number, .number-2 {
     font-weight: bold;
 }
 

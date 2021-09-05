@@ -3,6 +3,8 @@ const inputSection = wrapper.querySelector(".input-section");
 const infoTxt = inputSection.querySelector(".info-txt");
 const inputField = inputSection.querySelector("input");
 const locationButton = inputSection.querySelector("button");
+const weatherIcon = wrapper.querySelector("#state");
+const arrowBack = wrapper.querySelector("header i");
 
 let pai;
 
@@ -20,12 +22,16 @@ locationButton.addEventListener("click", () => {
     }
 });
 
+arrowBack.addEventListener("click", () => {
+    wrapper.classList.remove("active");
+});
+
 function onSuccess(position) {
     const {
         latitude,
         longitude
     } = position.coords;
-    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.apiKey}`;
+    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${config.apiKey}`;
     fecthData();
 }
 
@@ -35,7 +41,7 @@ function onError(error) {
 }
 
 function requestApi(city) {
-    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}`;
+    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${config.apiKey}`;
     fecthData();
 }
 
@@ -54,11 +60,39 @@ function weatherDetails(info) {
         // get propierties
         const city = info.name;
         const country = info.sys.country;
-        const {description, id} = info.weather[0];
-        const {feels_like, humidity, temp} = info.main;
+        const {
+            description,
+            id
+        } = info.weather[0];
+        const {
+            feels_like,
+            humidity,
+            temp
+        } = info.main;
+
+        // set icon
+        if (id === 800) { // clear
+            weatherIcon.classList.replace("fa-cloud", "fa-sun");
+        } else if (id >= 200 && id <= 232) { // strom
+            weatherIcon.classList.replace("fa-cloud", "fa-bolt");
+        } else if (id >= 600 && id <= 622) { // snow
+            weatherIcon.classList.replace("fa-cloud", "fa-snowflake");
+        } else if (id >= 701 && id <= 781) { // haze, smog , "calima"
+            weatherIcon.classList.replace("fa-cloud", "fa-smog");
+        } else if (id >= 801 && id <= 804) { //cloud
+            weatherIcon.classList.replace("fa-cloud", "fa-cloud");
+        } else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531)) { // rain
+            weatherIcon.classList.replace("fa-cloud", "fa-cloud-rain");
+        }
+
+        // set values
+        wrapper.querySelector(".temp .number").textContent = Math.floor(temp);
+        wrapper.querySelector(".weather").textContent = description;
+        wrapper.querySelector(".location span").textContent = `${city}, ${country}`;
+        wrapper.querySelector(".temp .number-2").textContent = Math.floor(feels_like);
+        wrapper.querySelector(".humidity span").textContent = `${humidity}%`;
 
         infoTxt.classList.remove("pending", "error");
         wrapper.classList.add("active");
-        console.log(info);
     }
 }
